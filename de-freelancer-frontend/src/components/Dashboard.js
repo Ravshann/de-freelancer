@@ -65,6 +65,7 @@ const Dashboard = ({ address }) => {
     useEffect(() => doSetupDb(), []);
 
     const doSetupDb = async () => {
+        //PLEASE CHANGE THIS CONFIG FOR PROPER FIREBASE CONFIG
         const firebaseConfig = {
             apiKey: "AIzaSyAiM_yMTzo2fTzz1ZHnBdODIsNR0gN51_8",
             authDomain: "crypto-app-8ab81.firebaseapp.com",
