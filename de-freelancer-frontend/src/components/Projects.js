@@ -18,6 +18,9 @@ import { getFirestore } from "firebase/firestore";
 import ProjectDialog from './ProjectDialog';
 import Button from '@mui/material/Button';
 
+import { firebaseConfig } from '../configs/Configs';
+
+
 
 const columns = [
   { id: 'title', label: 'Title', minWidth: 20 },
@@ -97,16 +100,6 @@ const Projects = ({ client }) => {
   }
 
   const doPullData = async () => {
-    const firebaseConfig = {
-      apiKey: "AIzaSyAiM_yMTzo2fTzz1ZHnBdODIsNR0gN51_8",
-      authDomain: "crypto-app-8ab81.firebaseapp.com",
-      projectId: "crypto-app-8ab81",
-      storageBucket: "crypto-app-8ab81.appspot.com",
-      messagingSenderId: "335621362565",
-      appId: "1:335621362565:web:652e94615206af2227aaec",
-      measurementId: "G-D4BPHRNRG5"
-    };
-
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     // Initialize Cloud Firestore and get a reference to the service

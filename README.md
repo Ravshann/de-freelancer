@@ -74,8 +74,8 @@ The system can evolve and change all the above listed parts to other technologie
 | index | Functions                                                       | Description                                                                       |
 | ----- | --------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | 1     | registerUser(bool isClient, address addr)                         | users get registered with this endpoint borrowers                                                  |
-| 2     | deregisterUser(bool isClient, address \_removeBorrower)                    | users get deregistered with this endpoint                                      |
-| 3     | initializeProject(string projectTitle, string description, uint256 budget, uint256 minimumPayment)                                                  | Clients initialize the project                                                       |
+| 2     | deregisterUser(bool isClient, address)                    | users get deregistered with this endpoint                                      |
+| 3     | initializeProject(string projectTitle, string description, uint256 budget, uint256 minimumPayment)                                                  | clients initialize the project                                                       |
 | 4     | setFreelancerAndEngage(uint256 id, address freelancer)                                             | once client chooses freelancer to work with, project status changes to ENGAGED and freelancer address will be set                                                     |
 | 5     | endEngagement(uint256 id)                                              | freelancer or client of project can end the project in the ENGAGED status                                             |
 | 6     | finishProject(uint256 id)                                                   | this method is called only by freelancers, for finishing the project                                     |
@@ -109,7 +109,57 @@ NOTICE: The project is not fully developed at the moment, and there are many mor
 ## Installation guide
 
 ### Prerequisites
-1. Metamask account
+1. Git
+2. Yarn
+3. React
+4. Firebase account
+5. Remix online editor
+6. Metamask account
 
-### Step 1 - add test network in Metamask
-To deploy smart-contracts and interact with our test-network we have to connect it to Metamask account.
+### Step 1 - clone this repository
+
+
+### Step 2 - deploy smart-contract
+Once you clone the project you should see ```de-freelancer.sol``` file in smart-contract folder in root folder of this project. Copy content or import the whole code into Remix online editor. Compile the code and deploy it with your Metamask wallet in any Ethereum test-network(I use Rinkeby).
+
+### Step 3 - install all dependencies
+Go to de-freelancer-frontend folder and run ```yarn``` command. That's it. This should install all the dependencies.
+
+### Step 4 - configure Firebase database
+Visit https://console.firebase.google.com and create a new project.
+Go to project settings and find ```Your apps``` section in ```General``` tab. There click on ```Add app``` button and create a Web app. You should see similar thing:
+![](./assets/firebase-app.png)
+
+Now go to ```Firestore Database``` menu and select ```Rules``` tab. There edit the rules like below:
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+```
+Now we should be good to go if all previous steps done correctly.
+
+One last step in configuration, creating a collection. Go to ```Data``` tab in ```Firestore Database``` and click on ```Start collection``` button. Name the collection as ```projects```. 
+
+### Step 5 - configure frontend
+Now we need to configure 2 places in our frontend code:
+
+1) Copy deployed smart-contract address and replace with the one  in ```Configs.js``` file(and save).
+Smart-contract address can be grabbed here:
+![](./assets/address-grab.png)
+
+2) Copy config from Firebase and replace with ```firebaseConfig``` in ```Configs.js``` file: 
+![](./assets/configs.png)
+
+### Step 6 - run the frontend
+Finally we can run the code!
+Go to de-freelancer-frontend folder and run:
+
+```yarn start```
+
+You should be able to similar thing when you visit http://localhost:3000:
+![](./assets/running-app.png)
