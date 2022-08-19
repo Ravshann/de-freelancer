@@ -105,6 +105,13 @@ The total time estimate for this project is approximately 2-3 months.
 
 NOTICE: The project is not fully developed at the moment, and there are many more plans for expansion.
 
+#
+
+## Presentation deck
+
+Presentation deck can be found at ```presentation``` folder of this project.
+
+#
 
 ## Installation guide
 
@@ -146,13 +153,13 @@ Now we should be good to go if all previous steps done correctly.
 One last step in configuration, creating a collection. Go to ```Data``` tab in ```Firestore Database``` and click on ```Start collection``` button. Name the collection as ```projects```. 
 
 ### Step 5 - configure frontend
-Now we need to configure 2 places in our frontend code:
+Now we need to configure 2 things in our frontend code:
 
 1) Copy deployed smart-contract address and replace with the one  in ```Configs.js``` file(and save).
 Smart-contract address can be grabbed here:
 ![](./assets/address-grab.png)
 
-2) Copy config from Firebase and replace with ```firebaseConfig``` in ```Configs.js``` file: 
+2) Copy config from Firebase(Project Settings > General > Your apps) and replace with ```firebaseConfig``` in ```Configs.js``` file: 
 ![](./assets/configs.png)
 
 ### Step 6 - run the frontend
@@ -163,3 +170,5 @@ Go to de-freelancer-frontend folder and run:
 
 You should be able to similar thing when you visit http://localhost:3000:
 ![](./assets/running-app.png)
+
+
